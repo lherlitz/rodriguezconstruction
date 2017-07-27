@@ -1,4 +1,4 @@
-!function(){try{document.getElementsByClassName("engine")[0].getElementsByTagName("a")[0].removeAttribute("rel")}catch(b){}if(!document.getElementById("top-1")){var a=document.createElement("section");a.id="top-1";a.className="engine";a.innerHTML='<a href="https://mobirise.info">Mobirise</a> Mobirise v4.0.14';document.body.insertBefore(a,document.body.childNodes[0])}}();
+!function(){try{document.getElementsByClassName("engine")[0].getElementsByTagName("a")[0].removeAttribute("rel")}catch(b){}if(!document.getElementById("top-1")){var a=document.createElement("section");a.id="top-1";a.className="engine";a.innerHTML='<a href="https://mobirise.info">Mobirise</a> Mobirise v4.0.17';document.body.insertBefore(a,document.body.childNodes[0])}}();
 (function($) {
 
     var isBuilder = $('html').hasClass('is-builder');
@@ -1226,5 +1226,14 @@
                 initTable($(this),isSearch);
             });
         }
-    }    
+    }
+
+// Cards With Popup Buttons
+    if (!isBuilder) {
+        if ($('section.popup-btn-cards').length!=0) {
+            $('section.popup-btn-cards .card-wrapper').each(function(index, el) {
+                $(this).addClass('popup-btn');
+            });
+        }
+    } 
 })(jQuery);
