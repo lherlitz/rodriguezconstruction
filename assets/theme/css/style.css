@@ -423,3 +423,10 @@ nav .mbr-section-btn {
     display: -webkit-flex !important; } }
 
 /*# sourceMappingURL=style.css.map */
+
+/* Parallax overlay sync fix */
+.mbr-parallax-background .mbr-overlay {
+  position: fixed !important;
+  z-index: -1;
+  will-change: transform;
+}
