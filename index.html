@@ -456,48 +456,59 @@
   <script src="assets/theme/js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
   <script>
-    $(function() {
-      // Initialize EmailJS
-      if (typeof emailjs !== 'undefined') {
-        emailjs.init('sOiTeACTeBBhKrq7V');
-        console.log('EmailJS initialized successfully');
-      } else {
-        console.error('EmailJS library not loaded');
+    function initEmailJS() {
+      // Wait for EmailJS to load
+      if (typeof emailjs === 'undefined') {
+        setTimeout(initEmailJS, 100);
+        return;
       }
 
-      // Handle form submission
-      $('#contact-form').on('submit', function(event) {
-        event.preventDefault();
-        console.log('Form submitted');
+      $(function() {
+        // Initialize EmailJS
+        emailjs.init('sOiTeACTeBBhKrq7V');
+        console.log('EmailJS initialized successfully');
 
-        // Show loading state
-        var $btn = $(this).find('button[type="submit"]');
-        var originalText = $btn.text();
-        $btn.prop('disabled', true).text('Sending...');
+        // Handle form submission
+        $('#contact-form').on('submit', function(event) {
+          event.preventDefault();
+          console.log('Form submitted');
 
-        // Prepare form data
-        var templateParams = {
-          name: $('#name-form1-o').val(),
-          email: $('#email-form1-o').val(),
-          phone: $('#phone-form1-o').val(),
-          message: $('#message-form1-o').val(),
-          to_email: 'padishar2005@yahoo.com'
-        };
+          // Show loading state
+          var $btn = $(this).find('button[type="submit"]');
+          var originalText = $btn.text();
+          $btn.prop('disabled', true).text('Sending...');
 
-        // Send email
-        emailjs.send('service_f2kpo61', '8rgoiq8', templateParams)
-          .then(function(response) {
-            console.log('Email sent successfully:', response);
-            $('[data-form-alert]').show().text('Thanks for filling out the form!');
-            $('#contact-form')[0].reset();
-            $btn.prop('disabled', false).text(originalText);
-          }, function(error) {
-            console.error('Email send failed:', error);
-            alert('There was an error sending your message. Please try again.');
-            $btn.prop('disabled', false).text(originalText);
-          });
+          // Prepare form data
+          var templateParams = {
+            name: $('#name-form1-o').val(),
+            email: $('#email-form1-o').val(),
+            phone: $('#phone-form1-o').val(),
+            message: $('#message-form1-o').val(),
+            to_email: 'padishar2005@yahoo.com'
+          };
+
+          // Send email
+          emailjs.send('service_f2kpo61', '8rgoiq8', templateParams)
+            .then(function(response) {
+              console.log('Email sent successfully:', response);
+              $('[data-form-alert]').show().text('Thanks for filling out the form!');
+              $('#contact-form')[0].reset();
+              $btn.prop('disabled', false).text(originalText);
+            }, function(error) {
+              console.error('Email send failed:', error);
+              alert('There was an error sending your message. Please try again.');
+              $btn.prop('disabled', false).text(originalText);
+            });
+        });
       });
-    });
+    }
+
+    // Start initialization when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initEmailJS);
+    } else {
+      initEmailJS();
+    }
   </script>
   
   
