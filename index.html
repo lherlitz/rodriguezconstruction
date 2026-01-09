@@ -458,11 +458,17 @@
   <script>
     $(function() {
       // Initialize EmailJS
-      emailjs.init('sOiTeACTeBBhKrq7V');
+      if (typeof emailjs !== 'undefined') {
+        emailjs.init('sOiTeACTeBBhKrq7V');
+        console.log('EmailJS initialized successfully');
+      } else {
+        console.error('EmailJS library not loaded');
+      }
 
       // Handle form submission
       $('#contact-form').on('submit', function(event) {
         event.preventDefault();
+        console.log('Form submitted');
 
         // Show loading state
         var $btn = $(this).find('button[type="submit"]');
