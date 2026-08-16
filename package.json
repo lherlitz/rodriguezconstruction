@@ -1,0 +1,31 @@
+{
+  "name": "rodriguezconstruction",
+  "version": "1.0.0",
+  "description": "GitHub Pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lherlitz/rodriguezconstruction.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/lherlitz/rodriguezconstruction/issues"
+  },
+  "homepage": "https://github.com/lherlitz/rodriguezconstruction#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "http-server": "^14.1.1"
+  }
+}

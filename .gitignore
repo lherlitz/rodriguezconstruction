@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# beads issue-tracker state (no longer used)
+.beads/
+
+# editor/OS noise
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
+
+# local agent instruction files (these are project-specific, not repo code)
+CLAUDE.md
+AGENTS.md
+
+# Node / Playwright
+node_modules/
+package-lock.json
+playwright-report/
+test-results/
+*.log
